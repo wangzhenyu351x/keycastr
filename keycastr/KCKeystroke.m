@@ -42,8 +42,17 @@
     }
 
     _keyCode = event.keyCode;
-    _characters = [event.characters copy];
-    _charactersIgnoringModifiers = [event.charactersIgnoringModifiers copy];
+    if (event.type == NSEventTypeOtherMouseDown
+        || event.type == NSEventTypeLeftMouseDown
+        || event.type == NSEventTypeRightMouseDown
+        || event.type == NSEventTypeFlagsChanged
+        ) {
+        _characters = @"";
+        _charactersIgnoringModifiers = @"";
+    } else {
+        _characters = [event.characters copy];
+        _charactersIgnoringModifiers = [event.charactersIgnoringModifiers copy];
+    }
 
     return self;
 }

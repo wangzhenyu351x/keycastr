@@ -270,14 +270,27 @@ static NSInteger kKCPrefDisplayIconInDock = 0x02;
     }
 }
 
-- (void)eventTap:(KCEventTap *)tap noteFlagsChanged:(NSEventModifierFlags)flags
-{
+- (void)eventTap:(KCEventTap *)tap noteFlagsChanged:(NSEventModifierFlags)flags noteKeystroke:(KCKeystroke *)keystroke {
+
     if (!_isCapturing) {
         return;
     }
     
     if (currentVisualizer != nil) {
 		[currentVisualizer noteFlagsChanged:flags];
+
+//        NSEvent *event = [NSEvent eventWithCGEvent:eventRef];
+//        KCKeystroke* keystroke = [KCKeystroke eventWithNSEvent:event];
+
+        id<KCVisualizer> visualizer = self.currentVisualizer;
+        if ([visualizer
+            isKindOfClass:NSClassFromString(@"KCDefaultVisualizer")]) {
+            KCDefaultVisualizer *deVisulizer = visualizer;
+
+            NSString *str = [keystroke convertToString];
+
+            [deVisulizer.getVisualizerWindow updateModifiedKeyState:str];
+        }
     }
 }
 
@@ -294,6 +307,16 @@ static NSInteger kKCPrefDisplayIconInDock = 0x02;
 - (void)mouseEventVisualizer:(KCMouseEventVisualizer *)visualizer didNoteMouseEvent:(KCMouseEvent *)mouseEvent
 {
     [currentVisualizer noteMouseEvent:mouseEvent];
+
+//    id<KCVisualizer> visualizer = self.currentVisualizer;
+//    if ([visualizer
+//        isKindOfClass:NSClassFromString(@"KCDefaultVisualizer")]) {
+//        KCDefaultVisualizer *deVisulizer = visualizer;
+//
+//        NSString *str = [keystroke convertToString];
+//
+//        [deVisulizer.getVisualizerWindow updateModifiedKeyState:str];
+//    }
 }
 
 -(NSStatusItem*) createStatusItem

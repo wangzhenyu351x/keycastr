@@ -80,18 +80,24 @@
 - (void)addKeystroke:(KCKeystroke *)keystroke;
 - (void)addMouseEvent:(KCMouseEvent *)mouseEvent;
 - (void)addRunningAnimation:(KCBezelAnimation *)animation;
+- (void)updateString:(NSString*)t;
+- (void)appendString:(NSString *)string;
+- (void)updateModifiedKeyState:(NSString *)string;
 
 - (instancetype)init;
+- (NSView *)getStateView;
 
 @end
 
-@interface KCDefaultVisualizer : KCVisualizer <KCVisualizer>
-{
-	KCDefaultVisualizerWindow* visualizerWindow;
-}
+@interface KCModifiedVisualizerBezelView : KCDefaultVisualizerBezelView
+@end
 
+@interface KCDefaultVisualizer : KCVisualizer <KCVisualizer> {
+    KCDefaultVisualizerWindow* visualizerWindow;
+}
 -(NSString*) visualizerName;
 -(void) deactivateVisualizer:(id)sender;
+- (KCDefaultVisualizerWindow *)getVisualizerWindow;
 
 @end
 

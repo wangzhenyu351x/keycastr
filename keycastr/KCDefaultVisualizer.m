@@ -1,30 +1,30 @@
-    //	Copyright (c) 2009 Stephen Deken
-    //	Copyright (c) 2014-2023 Andrew Kitchen
-    //
-    //	All rights reserved.
-    //
-    //	Redistribution and use in source and binary forms, with or without modification,
-    //	are permitted provided that the following conditions are met:
-    //
-    //	*	Redistributions of source code must retain the above copyright notice, this
-    //		list of conditions and the following disclaimer.
-    //	*	Redistributions in binary form must reproduce the above copyright notice,
-    //		this list of conditions and the following disclaimer in the documentation
-    //		and/or other materials provided with the distribution.
-    //	*	Neither the name KeyCastr nor the names of its contributors may be used to
-    //		endorse or promote products derived from this software without specific
-    //		prior written permission.
-    //
-    //	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-    //	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-    //	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-    //	IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
-    //	INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-    //	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-    //	DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-    //	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-    //	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-    //	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+//	Copyright (c) 2009 Stephen Deken
+//	Copyright (c) 2014-2023 Andrew Kitchen
+//
+//	All rights reserved.
+//
+//	Redistribution and use in source and binary forms, with or without modification,
+//	are permitted provided that the following conditions are met:
+//
+//	*	Redistributions of source code must retain the above copyright notice, this
+//		list of conditions and the following disclaimer.
+//	*	Redistributions in binary form must reproduce the above copyright notice,
+//		this list of conditions and the following disclaimer in the documentation
+//		and/or other materials provided with the distribution.
+//	*	Neither the name KeyCastr nor the names of its contributors may be used to
+//		endorse or promote products derived from this software without specific
+//		prior written permission.
+//
+//	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+//	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+//	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+//	IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+//	INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+//	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+//	DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+//	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+//	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+//	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 #import "KCDefaultVisualizer.h"
@@ -35,7 +35,7 @@
 
 
     // TODO: seems this should be based on the font height, or shouldn't be needed at all
-static const CGFloat kKCDefaultBezelHeight = 32.0;
+static const CGFloat kKCDefaultBezelHeight = 32.0 * 5;
 static const CGFloat kKCDefaultBezelPadding = 10.0;
 
 
@@ -68,6 +68,10 @@ static const CGFloat kKCDefaultBezelPadding = 10.0;
     visualizerWindow = [[KCDefaultVisualizerWindow alloc] init];
 
     return self;
+}
+
+- (KCDefaultVisualizerWindow *)getVisualizerWindow {
+    return visualizerWindow;
 }
 
 - (void)dealloc
@@ -130,6 +134,7 @@ static NSRect KC_defaultFrame(void) {
 @implementation KCDefaultVisualizerWindow {
     BOOL _shouldResize;
     BOOL _dragging;
+    NSView *_stateView;
 }
 
 - (instancetype)init
@@ -140,6 +145,9 @@ static NSRect KC_defaultFrame(void) {
                                defer:NO];
 }
 
+- (NSView *)getStateView {
+    return _stateView;
+}
 - (instancetype)initWithContentRect:(NSRect)contentRect styleMask:(NSWindowStyleMask)styleMask backing:(NSBackingStoreType)backing defer:(BOOL)defer
 {
     if (!(self = [super initWithContentRect:contentRect styleMask:styleMask backing:backing defer:defer]))
@@ -178,6 +186,7 @@ static NSRect KC_defaultFrame(void) {
 - (void)dealloc {
     [_runningAnimations removeAllObjects];
     [_runningAnimations release];
+    [_stateView release];
     [super dealloc];
 }
 
@@ -248,6 +257,30 @@ static NSRect KC_defaultFrame(void) {
         }
 
     [self appendString:[keystroke convertToString]];
+}
+
+- (void)updateModifiedKeyState:(NSString *)string {
+    if (!_stateView) {
+        NSColor *backgroundColor = [[NSUserDefaults standardUserDefaults] colorForKey:@"default.bezelColor"];
+        _stateView = [[KCModifiedVisualizerBezelView alloc] initWithMaxWidth:NSWidth(self.frame)
+                                                                              text:string
+                                                                   backgroundColor:backgroundColor];
+        [_stateView setAutoresizingMask:NSViewMinYMargin];
+        NSRect frame = _stateView.frame;
+//        frame.size.height += 10;
+        CGFloat x = 200;
+        frame.origin.x = x;
+        frame.origin.y = 10;
+        _stateView.frame = frame;
+        [self.contentView addSubview:_stateView];
+//        [self.contentView.layer setMasksToBounds:NO];
+    }
+    KCModifiedVisualizerBezelView *stView = (KCModifiedVisualizerBezelView *)_stateView;
+    [stView updateString:string];
+//    [_stateView setTitle:string];
+
+//    NSViKCDefaultVisualizerBezelViewew *view =  [[KCDefaultVisualizerBezelView alloc] xinitWithMaxWidth:NSWidth(self.frame) text:@"remain" backgroundColor:NSColor.redColor];
+
 }
 
 - (void)appendString:(NSString *)string
@@ -401,6 +434,9 @@ static NSRect KC_defaultFrame(void) {
     for (i = 0; i < vc; ++i)
         {
         NSView* v = [a objectAtIndex:i];
+        if ([v isEqualTo:[w getStateView]]) {
+            continue;
+        }
         NSRect r = [v frame];
         r.origin.y += deltaY;
         [v setFrame:r];
@@ -482,8 +518,7 @@ static const int kKCBezelBorder = 6;
             nil];
 }
 
--(void) setAlphaValue:(float)opacity
-{
+-(void) setAlphaValue:(float)opacity {
     _opacity = opacity;
     [_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
 }
@@ -501,7 +536,7 @@ static const int kKCBezelBorder = 6;
     [_layoutManager drawGlyphsForGlyphRange:NSMakeRange(0,[_textStorage length]) atPoint:NSMakePoint(kKCBezelBorder, kKCBezelBorder)];
 }
 
--(void) maybeResize
+-(void)maybeResize
 {
     NSRect frame = [self frame];
     [_layoutManager glyphRangeForTextContainer:_textContainer];
@@ -521,18 +556,23 @@ static const int kKCBezelBorder = 6;
             for (i = 0; i < vc; ++i)
                 {
                 NSView* v = [a objectAtIndex:i];
+                if ([v isEqualTo:[w getStateView]]) {
+                    continue;
+                }
                 if (v == self) continue;
                 NSRect f = [v frame];
-                if (f.origin.y > frame.origin.y)
+                if (f.origin.y > frame.origin.y) {
                     f.origin.y += deltaY;
+
                 }
+            }
             NSRect r = [w frame];
             r.size.height += deltaY;
             [self setAutoresizingMask:NSViewMaxYMargin];
-            [w setFrame:r display:YES];
+            [w setFrame:r display:_textStorage.length > 0];
             [self setAutoresizingMask:NSViewMinYMargin];
-            }
         }
+    }
 }
 
 -(void) appendString:(NSString*)t
@@ -544,9 +584,80 @@ static const int kKCBezelBorder = 6;
     [self setNeedsDisplay:YES];
 }
 
+- (void)updateString:(NSString*)t {
+    [_textStorage setAttributedString:[[[NSAttributedString alloc] initWithString:t] autorelease]];
+    [_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
+    [self maybeResize];
+    [self setNeedsDisplay:YES];
+    if (_textStorage.length) {
+        self.hidden = NO;
+    } else {
+        self.hidden = YES;
+    }
+}
+
 -(BOOL) isFlipped
 {
     return YES;
+}
+
+@end
+
+@implementation KCModifiedVisualizerBezelView
+
+-(void) setAlphaValue:(float)opacity {
+    if (_textStorage.length == 0) {
+        opacity = 1.0;
+    } else {
+        opacity = 0.0;
+    }
+    [super setAlphaValue:opacity];
+}
+
+-(void) beginFadeOut:(id)sender {
+}
+
+- (void)setFrame:(NSRect)frame {
+    frame.origin.y = 0;
+    [super setFrame:frame];
+}
+
+-(void)maybeResize {
+    NSRect frame = [self frame];
+    [_layoutManager glyphRangeForTextContainer:_textContainer];
+    NSSize size = [_layoutManager usedRectForTextContainer:_textContainer].size;
+    size.width += kKCBezelBorder * 2;
+    size.height += kKCBezelBorder * 2;
+    if (frame.size.width != size.width || frame.size.height != size.height)
+        {
+        [self setFrameSize:size];
+//        if (size.height != frame.size.height)
+//            {
+//            float deltaY = size.height - frame.size.height;
+//            NSWindow* w = [self window];
+//            NSArray* a = [[w contentView] subviews];
+//            NSUInteger vc = [a count];
+//            int i;
+//            for (i = 0; i < vc; ++i)
+//                {
+//                NSView* v = [a objectAtIndex:i];
+//                if ([v isEqualTo:[w getStateView]]) {
+//                    continue;
+//                }
+//                if (v == self) continue;
+//                NSRect f = [v frame];
+//                if (f.origin.y > frame.origin.y) {
+//                    f.origin.y += deltaY;
+//
+//                }
+//            }
+//            NSRect r = [w frame];
+//            r.size.height += deltaY;
+//            [self setAutoresizingMask:NSViewMaxYMargin];
+//            [w setFrame:r display:_textStorage.length > 0];
+//            [self setAutoresizingMask:NSViewMinYMargin];
+//        }
+    }
 }
 
 @end

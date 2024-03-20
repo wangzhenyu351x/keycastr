@@ -26,7 +26,6 @@
 //	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 //	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-
 #import "KCEventTap.h"
 #import "KCKeystroke.h"
 #import "KCKeycastrEvent.h"
@@ -45,43 +44,44 @@
 @end
 
 CGEventRef nullEventTapCallback(
-   CGEventTapProxy proxy,
-   CGEventType type,
-   CGEventRef event,
-   void *vp)
+                                CGEventTapProxy proxy,
+                                CGEventType type,
+                                CGEventRef event,
+                                void *vp)
 {
     return NULL;
 }
 
 CGEventRef eventTapCallback(
-   CGEventTapProxy proxy,
-   CGEventType type,
-   CGEventRef event,
-   void *vp)
+                            CGEventTapProxy proxy,
+                            CGEventType type,
+                            CGEventRef event,
+                            void *vp)
 {
     KCEventTap* keyTap = (KCEventTap*)vp;
     switch (type)
-    {
-        case kCGEventLeftMouseDown:
-        case kCGEventRightMouseDown:
-        case kCGEventLeftMouseUp:
-        case kCGEventRightMouseUp:
-        case kCGEventLeftMouseDragged:
-        case kCGEventRightMouseDragged:
-        case kCGEventOtherMouseDown:
-        case kCGEventOtherMouseUp:
-        case kCGEventOtherMouseDragged:
-            [keyTap _noteMouseEvent:event];
+        {
+            case kCGEventLeftMouseDown:
+            case kCGEventRightMouseDown:
+            case kCGEventLeftMouseUp:
+            case kCGEventRightMouseUp:
+            case kCGEventLeftMouseDragged:
+            case kCGEventRightMouseDragged:
+            case kCGEventOtherMouseDown:
+            case kCGEventOtherMouseUp:
+            case kCGEventOtherMouseDragged:
+                [keyTap _noteMouseEvent:event];
             break;
-        case kCGEventKeyDown:
-            [keyTap _noteKeyEvent:event];
+            case kCGEventKeyDown:
+                [keyTap _noteKeyEvent:event];
             break;
-        case kCGEventFlagsChanged:
-            [keyTap _noteFlagsChanged:event];
+            case kCGEventFlagsChanged:
+                [keyTap _noteFlagsChanged:event];
+//                [keyTap _noteKeyEvent:event];
             break;
-        default:
+            default:
             break;
-    }
+        }
     return NULL;
 }
 
@@ -91,10 +91,10 @@ CGEventRef eventTapCallback(
 
 -(id) init
 {
-	if (!(self = [super init]))
-		return nil;
+    if (!(self = [super init]))
+        return nil;
 
-	return self;
+    return self;
 }
 
 - (void)dealloc {
@@ -109,8 +109,8 @@ CGEventRef eventTapCallback(
     return [NSError errorWithDomain:NSBundle.mainBundle.bundleIdentifier
                                code:0
                            userInfo:@{
-                                      NSLocalizedDescriptionKey: NSLocalizedString(description, nil)
-                                      }];
+        NSLocalizedDescriptionKey: NSLocalizedString(description, nil)
+    }];
 }
 
 -(BOOL) installTapWithError:(NSError **)error {
@@ -118,17 +118,17 @@ CGEventRef eventTapCallback(
         return YES;
     }
     
-    // We have to try to tap the keydown event independently because CGEventTapCreate will succeed if it can
-    // install the event tap for the flags changed event, which apparently doesn't require universal access
-    // to be enabled.  Thus, the call would succeed but KeyCastr would be, um, useless.
+        // We have to try to tap the keydown event independently because CGEventTapCreate will succeed if it can
+        // install the event tap for the flags changed event, which apparently doesn't require universal access
+        // to be enabled.  Thus, the call would succeed but KeyCastr would be, um, useless.
     CFMachPortRef tapKeyDown = CGEventTapCreate(
-                                         kCGSessionEventTap,
-                                         kCGHeadInsertEventTap,
-                                         kCGEventTapOptionListenOnly,
-                                         CGEventMaskBit(kCGEventKeyDown),
-                                         nullEventTapCallback,
-                                         self
-                                         );
+                                                kCGSessionEventTap,
+                                                kCGHeadInsertEventTap,
+                                                kCGEventTapOptionListenOnly,
+                                                CGEventMaskBit(kCGEventKeyDown),
+                                                nullEventTapCallback,
+                                                self
+                                                );
     
     if (tapKeyDown == NULL) {
         if (error != NULL) {
@@ -139,23 +139,23 @@ CGEventRef eventTapCallback(
     CFRelease( tapKeyDown );
     
     eventTap = CGEventTapCreate(
-                           kCGSessionEventTap,
-                           kCGHeadInsertEventTap,
-                           kCGEventTapOptionListenOnly,
-                           CGEventMaskBit(kCGEventLeftMouseDown)
-                                   | CGEventMaskBit(kCGEventLeftMouseUp)
-                                   | CGEventMaskBit(kCGEventRightMouseDown)
-                                   | CGEventMaskBit(kCGEventRightMouseUp)
-                                   | CGEventMaskBit(kCGEventLeftMouseDragged)
-                                   | CGEventMaskBit(kCGEventRightMouseDragged)
-                                   | CGEventMaskBit(kCGEventKeyDown)
-                                   | CGEventMaskBit(kCGEventFlagsChanged)
-                                   | CGEventMaskBit(kCGEventOtherMouseDown)
-                                   | CGEventMaskBit(kCGEventOtherMouseUp)
-                                   | CGEventMaskBit(kCGEventOtherMouseDragged),
-                           eventTapCallback,
-                           self
-                           );
+                                kCGSessionEventTap,
+                                kCGHeadInsertEventTap,
+                                kCGEventTapOptionListenOnly,
+                                CGEventMaskBit(kCGEventLeftMouseDown)
+                                | CGEventMaskBit(kCGEventLeftMouseUp)
+                                | CGEventMaskBit(kCGEventRightMouseDown)
+                                | CGEventMaskBit(kCGEventRightMouseUp)
+                                | CGEventMaskBit(kCGEventLeftMouseDragged)
+                                | CGEventMaskBit(kCGEventRightMouseDragged)
+                                | CGEventMaskBit(kCGEventKeyDown)
+                                | CGEventMaskBit(kCGEventFlagsChanged)
+                                | CGEventMaskBit(kCGEventOtherMouseDown)
+                                | CGEventMaskBit(kCGEventOtherMouseUp)
+                                | CGEventMaskBit(kCGEventOtherMouseDragged),
+                                eventTapCallback,
+                                self
+                                );
     
     if (eventTap == NULL) {
         if (error != NULL) {
@@ -203,24 +203,26 @@ CGEventRef eventTapCallback(
     _tapInstalled = NO;
 }
 
+// 获取修饰键.
 -(void) _noteFlagsChanged:(CGEventRef)event
 {
-	NSEventModifierFlags modifiers = 0;
-	CGEventFlags f = CGEventGetFlags( event );
+    NSEventModifierFlags modifiers = 0;
+    CGEventFlags f = CGEventGetFlags( event );
 
-	if (f & kCGEventFlagMaskShift)
+    if (f & kCGEventFlagMaskShift)
         modifiers |= NSEventModifierFlagShift;
-	
-	if (f & kCGEventFlagMaskCommand)
+
+    if (f & kCGEventFlagMaskCommand)
         modifiers |= NSEventModifierFlagCommand;
 
-	if (f & kCGEventFlagMaskControl)
+    if (f & kCGEventFlagMaskControl)
         modifiers |= NSEventModifierFlagControl;
-	
-	if (f & kCGEventFlagMaskAlternate)
+
+    if (f & kCGEventFlagMaskAlternate)
         modifiers |= NSEventModifierFlagOption;
 
-	[self noteFlagsChanged:modifiers];
+    KCKeystroke *stroke = [[KCKeystroke alloc] initWithNSEvent:[NSEvent eventWithCGEvent:event]];
+    [self noteFlagsChanged:modifiers noteKeystroke:stroke];
 }
 
 -(void) _noteKeyEvent:(CGEventRef)eventRef
@@ -242,9 +244,8 @@ CGEventRef eventTapCallback(
     [_delegate eventTap:self noteKeystroke:keystroke];
 }
 
--(void) noteFlagsChanged:(NSEventModifierFlags)newFlags
-{
-    [_delegate eventTap:self noteFlagsChanged:newFlags];
+-(void) noteFlagsChanged:(NSEventModifierFlags)newFlags noteKeystroke:(KCKeystroke *)keystroke {
+    [_delegate eventTap:self noteFlagsChanged:newFlags noteKeystroke:keystroke];
 }
 
 @end

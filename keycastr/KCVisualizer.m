@@ -91,7 +91,15 @@
 
 - (void)noteFlagsChanged:(NSEventModifierFlags)flags
 {
+    /**
+     NSEventModifierFlagCapsLock           = 1 << 16, // Set if Caps Lock key is pressed.
+     NSEventModifierFlagShift              = 1 << 17, // Set if Shift key is pressed.
+     NSEventModifierFlagControl            = 1 << 18, // Set if Control key is pressed.
+     NSEventModifierFlagOption             = 1 << 19, // Set if Option or Alternate key is pressed.
+     NSEventModifierFlagCommand 
+     */
 	// Default implementation does nothing.
+
 }
 
 - (void)noteMouseEvent:(KCMouseEvent *)mouseEvent

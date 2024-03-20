@@ -108,9 +108,8 @@ static NSString *kKCMouseVisualizerDisplayOptionKey = @"mouse.displayOption";
     }
 
     // Options 2 & 3 include displaying mouse events in the keystroke visualizer.
-    if (self.selectedMouseDisplayOptionIndex >= 2) {
-        [self.delegate mouseEventVisualizer:self didNoteMouseEvent:mouseEvent];
-    }
+//    genera
+    [self.delegate mouseEventVisualizer:self didNoteMouseEvent:mouseEvent];
 }
 
 - (BOOL)isEnabled {
@@ -128,6 +127,7 @@ static NSString *kKCMouseVisualizerDisplayOptionKey = @"mouse.displayOption";
 }
 
 - (void)setSelectedMouseDisplayOptionIndex:(NSInteger)selectedMouseDisplayOptionIndex {
+    selectedMouseDisplayOptionIndex = 1;
     _selectedMouseDisplayOptionIndex = selectedMouseDisplayOptionIndex;
 
     [[NSUserDefaults standardUserDefaults] setInteger:selectedMouseDisplayOptionIndex
@@ -192,7 +192,7 @@ static NSString *kKCMouseVisualizerDisplayOptionKey = @"mouse.displayOption";
         self.circle = [CAShapeLayer layer];
 
         CGFloat diameter = 2 * kKCMouseVisualizerRadius;
-        CGFloat lineWidth = 2.0;
+        CGFloat lineWidth = 4.0;
         NSBezierPath *path = [NSBezierPath bezierPathWithRoundedRect:NSMakeRect(lineWidth, lineWidth, diameter - 2 * lineWidth, diameter - 2 * lineWidth)
                                                              xRadius:kKCMouseVisualizerRadius
                                                              yRadius:kKCMouseVisualizerRadius];
@@ -203,12 +203,14 @@ static NSString *kKCMouseVisualizerDisplayOptionKey = @"mouse.displayOption";
         NSColor *bezelColor = [[NSUserDefaults standardUserDefaults] colorForKey:@"default.bezelColor"];
         self.circle.strokeColor = bezelColor.CGColor;
 
-        self.circle.fillColor = NSColor.clearColor.CGColor;
+        self.circle.fillColor = NSColor.yellowColor.CGColor;
         self.circle.lineWidth = lineWidth;
         self.circle.opacity = 0.0;
 
         [self.contentView.layer addSublayer:self.circle];
     }
+    // 输入修饰键
+
 
     switch (event.type) {
         case NSEventTypeLeftMouseDown:

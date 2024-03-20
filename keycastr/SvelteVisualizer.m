@@ -103,7 +103,7 @@
     ({
 
         CGRect rect = NSMakeRect(0,(30 - size.height) / 2.0,oneQuarter,size.height);
-        rect.origin.x += 200;
+        // rect.origin.x += 200;
         [shiftKeyString drawInRect:rect withAttributes:attr];
     });
 
@@ -114,7 +114,7 @@
 	size = [controlKeyString sizeWithAttributes:attr];
     ({
         CGRect rect =NSMakeRect(oneQuarter,(30 - size.height) / 2.0,oneQuarter,size.height);
-        rect.origin.x += 200;
+        // rect.origin.x += 200;
         [controlKeyString drawInRect:rect withAttributes:attr];
     });
 
@@ -126,7 +126,7 @@
 	size = [altKeyString sizeWithAttributes:attr];
     ({
         CGRect rect = NSMakeRect(oneQuarter*2,(30 - size.height) / 2.0,oneQuarter,size.height);
-        rect.origin.x += 200;
+        // rect.origin.x += 200;
         [altKeyString drawInRect:rect withAttributes:attr];
     });
 
@@ -138,7 +138,7 @@
 	size = [commandKeyString sizeWithAttributes:attr];
     ({
         CGRect rect =NSMakeRect(oneQuarter*3,(30 - size.height) / 2.0,oneQuarter,size.height);
-        rect.origin.x += 200;
+        // rect.origin.x += 200;
         [commandKeyString drawInRect:rect withAttributes:attr];
     });
 
@@ -157,7 +157,7 @@
 		}
     ({
         CGRect rect = NSMakeRect(0,30+(frame.size.height-30 - size.height)/2.0,frame.size.width,size.height);
-        rect.origin.x += 200;
+        // rect.origin.x += 200;
             [_displayedString drawInRect:rect withAttributes:attr];
     });
 	}

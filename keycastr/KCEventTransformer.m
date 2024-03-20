@@ -180,10 +180,11 @@ static NSString* kLeftTabString = @"\xe2\x87\xa4";
 
     if (isShifted)
 	{
-		if (_modifiers & (NSEventModifierFlagControl | NSEventModifierFlagOption | NSEventModifierFlagCommand))
-			[mutableResponse appendString:kShiftKeyString];
-		else
-			needsShiftGlyph = YES;
+        [mutableResponse appendString:kShiftKeyString];
+//		if (_modifiers & (NSEventModifierFlagControl | NSEventModifierFlagOption | NSEventModifierFlagCommand))
+//
+//		else
+//			needsShiftGlyph = YES;
 	}
 
     if (_modifiers & NSEventModifierFlagCommand)
@@ -202,6 +203,10 @@ static NSString* kLeftTabString = @"\xe2\x87\xa4";
             needsShiftGlyph = NO;
         }
         [mutableResponse appendString:@"🖱️"];
+        return mutableResponse;
+    }
+
+    if (event.type == kCGEventFlagsChanged) {
         return mutableResponse;
     }
     
