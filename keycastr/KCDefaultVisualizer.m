@@ -1,30 +1,30 @@
-//	Copyright (c) 2009 Stephen Deken
-//	Copyright (c) 2014-2023 Andrew Kitchen
-//
-//	All rights reserved.
-//
-//	Redistribution and use in source and binary forms, with or without modification,
-//	are permitted provided that the following conditions are met:
-//
-//	*	Redistributions of source code must retain the above copyright notice, this
-//		list of conditions and the following disclaimer.
-//	*	Redistributions in binary form must reproduce the above copyright notice,
-//		this list of conditions and the following disclaimer in the documentation
-//		and/or other materials provided with the distribution.
-//	*	Neither the name KeyCastr nor the names of its contributors may be used to
-//		endorse or promote products derived from this software without specific
-//		prior written permission.
-//
-//	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-//	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-//	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
-//	IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
-//	INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-//	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
-//	DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-//	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
-//	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-//	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    //	Copyright (c) 2009 Stephen Deken
+    //	Copyright (c) 2014-2023 Andrew Kitchen
+    //
+    //	All rights reserved.
+    //
+    //	Redistribution and use in source and binary forms, with or without modification,
+    //	are permitted provided that the following conditions are met:
+    //
+    //	*	Redistributions of source code must retain the above copyright notice, this
+    //		list of conditions and the following disclaimer.
+    //	*	Redistributions in binary form must reproduce the above copyright notice,
+    //		this list of conditions and the following disclaimer in the documentation
+    //		and/or other materials provided with the distribution.
+    //	*	Neither the name KeyCastr nor the names of its contributors may be used to
+    //		endorse or promote products derived from this software without specific
+    //		prior written permission.
+    //
+    //	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+    //	AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    //	WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+    //	IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+    //	INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+    //	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+    //	DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+    //	LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+    //	OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+    //	ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 #import "KCDefaultVisualizer.h"
@@ -34,7 +34,7 @@
 #import "NSUserDefaults+Utility.h"
 
 
-// TODO: seems this should be based on the font height, or shouldn't be needed at all
+    // TODO: seems this should be based on the font height, or shouldn't be needed at all
 static const CGFloat kKCDefaultBezelHeight = 32.0;
 static const CGFloat kKCDefaultBezelPadding = 10.0;
 
@@ -43,17 +43,17 @@ static const CGFloat kKCDefaultBezelPadding = 10.0;
 
 -(NSString*) visualizerNibName
 {
-	return @"KCDefaultVisualizer";
+    return @"KCDefaultVisualizer";
 }
 
 -(Class) visualizerClass
 {
-	return [KCDefaultVisualizer class];
+    return [KCDefaultVisualizer class];
 }
 
 -(NSString*) visualizerName
 {
-	return @"Default";
+    return @"Default";
 }
 
 @end
@@ -78,7 +78,7 @@ static const CGFloat kKCDefaultBezelPadding = 10.0;
 
 -(NSString*) visualizerName
 {
-	return @"Default";
+    return @"Default";
 }
 
 -(void) awakeFromNib
@@ -88,17 +88,17 @@ static const CGFloat kKCDefaultBezelPadding = 10.0;
 
 -(void) showVisualizer:(id)sender
 {
-	[visualizerWindow orderFront:self];
+    [visualizerWindow orderFront:self];
 }
 
 -(void) hideVisualizer:(id)sender
 {
-	[visualizerWindow orderOut:self];
+    [visualizerWindow orderOut:self];
 }
 
 -(void) deactivateVisualizer:(id)sender
 {
-	[visualizerWindow orderOut:self];
+    [visualizerWindow orderOut:self];
 }
 
 - (BOOL)shouldOnlyDisplayCommandKeys
@@ -109,15 +109,15 @@ static const CGFloat kKCDefaultBezelPadding = 10.0;
 - (void)noteKeyEvent:(KCKeystroke *)keystroke
 {
     if (![keystroke isCommandKey] && [self shouldOnlyDisplayCommandKeys]) {
-		return;
-	}
-	[visualizerWindow addKeystroke:keystroke];
+        return;
+    }
+    [visualizerWindow addKeystroke:keystroke];
 }
 
 - (void)noteMouseEvent:(KCMouseEvent *)mouseEvent
 {
-    // TODO: these should be filtered or de-bounced
-	[visualizerWindow addMouseEvent:mouseEvent];
+        // TODO: these should be filtered or de-bounced
+    [visualizerWindow addMouseEvent:mouseEvent];
 }
 
 @end
@@ -128,8 +128,8 @@ static NSRect KC_defaultFrame(void) {
 }
 
 @implementation KCDefaultVisualizerWindow {
-	BOOL _shouldResize;
-	BOOL _dragging;
+    BOOL _shouldResize;
+    BOOL _dragging;
 }
 
 - (instancetype)init
@@ -190,7 +190,7 @@ static NSRect KC_defaultFrame(void) {
 - (void)resizePreservingHeight:(BOOL)keepHeight {
     NSRect screenRect = self.screen ? self.screen.frame : NSScreen.mainScreen.frame;
 
-    // Need to calculate a different width if our origin is dragged to a screen to the left
+        // Need to calculate a different width if our origin is dragged to a screen to the left
     CGFloat optimalWidth;
     if (NSMinX(self.frame) < NSMinX(self.screen.frame)) {
         optimalWidth = NSMinX(self.screen.frame) - NSMinX(self.frame) - kKCDefaultBezelPadding;
@@ -206,7 +206,7 @@ static NSRect KC_defaultFrame(void) {
     }
 
     NSRect frame = NSMakeRect(NSMinX(self.frame), NSMinY(self.frame), optimalWidth, height);
-	[self setFrame:frame display:NO];
+    [self setFrame:frame display:NO];
 }
 
 - (void)resetFrame {
@@ -215,19 +215,19 @@ static NSRect KC_defaultFrame(void) {
 
 - (void)abandonCurrentBezelView {
     [_currentBezelView release];
-	_currentBezelView = nil;
+    _currentBezelView = nil;
 }
 
 -(void) _cancelLineBreak
 {
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(abandonCurrentBezelView) object:nil];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(abandonCurrentBezelView) object:nil];
 }
 
 -(void) _scheduleLineBreak
 {
-	[self performSelector:@selector(abandonCurrentBezelView)
-			   withObject:nil
-			   afterDelay:[[NSUserDefaults standardUserDefaults] floatForKey:@"default.keystrokeDelay"]];
+    [self performSelector:@selector(abandonCurrentBezelView)
+               withObject:nil
+               afterDelay:[[NSUserDefaults standardUserDefaults] floatForKey:@"default.keystrokeDelay"]];
 }
 
 - (void)addMouseEvent:(KCMouseEvent *)mouseEvent
@@ -243,38 +243,39 @@ static NSRect KC_defaultFrame(void) {
     [self _cancelLineBreak];
 
     if ([keystroke isCommandKey])
-    {
+        {
         [self abandonCurrentBezelView];
-    }
+        }
 
     [self appendString:[keystroke convertToString]];
 }
 
 - (void)appendString:(NSString *)string
 {
-	if (_currentBezelView == nil)
-	{
+    if (_currentBezelView == nil)
+        {
         if (!(NSWidth(self.frame) > 0)) {
             NSLog(@"Fixing frame; width not greater than 0: %@", NSStringFromRect(self.frame));
             [self resetFrame];
         }
 
-		NSColor *backgroundColor = [[NSUserDefaults standardUserDefaults] colorForKey:@"default.bezelColor"];
-		_currentBezelView = [[KCDefaultVisualizerBezelView alloc] initWithMaxWidth:NSWidth(self.frame)
-																			  text:string
-																   backgroundColor:backgroundColor];
-		[_currentBezelView setAutoresizingMask:NSViewMinYMargin];
+        NSColor *backgroundColor = [[NSUserDefaults standardUserDefaults] colorForKey:@"default.bezelColor"];
+        _currentBezelView = [[KCDefaultVisualizerBezelView alloc] initWithMaxWidth:NSWidth(self.frame)
+                                                                              text:string
+                                                                   backgroundColor:backgroundColor];
+        [_currentBezelView setAutoresizingMask:NSViewMinYMargin];
 
         NSRect frame = self.frame;
         frame.size.height += 10 + _currentBezelView.frame.size.height;
-		[self setFrame:frame display:YES animate:NO];
-
-		[[self contentView] addSubview:_currentBezelView];
-	}
-	else
-	{
-		[_currentBezelView appendString:string];
-	}
+        CGFloat x = [NSScreen mainScreen].frame.size.width/2.0 - 100;
+        frame.origin.x = x;
+        [self setFrame:frame display:YES animate:NO];
+        [[self contentView] addSubview:_currentBezelView];
+        }
+    else
+        {
+        [_currentBezelView appendString:string];
+        }
     [self _scheduleLineBreak];
 }
 
@@ -284,12 +285,12 @@ static NSRect KC_defaultFrame(void) {
     [self saveFrameUsingName:self.frameAutosaveName];
 
     if (_dragging)
-		[animation stopAnimation];
+        [animation stopAnimation];
 }
 
 -(void) removeRunningAnimation:(KCBezelAnimation*)animation
 {
-	[_runningAnimations removeObject:animation];
+    [_runningAnimations removeObject:animation];
     [self saveFrameUsingName:self.frameAutosaveName];
 
     if (_runningAnimations.count == 0) {
@@ -302,24 +303,24 @@ static NSRect KC_defaultFrame(void) {
 
 - (void)_suspendAnimations
 {
-	NSUInteger vc = [_runningAnimations count];
-	int i;
-	for (i = 0; i < vc; ++i)
-	{
-		NSAnimation* anim = [_runningAnimations objectAtIndex:i];
-		[anim stopAnimation];
-	}
+    NSUInteger vc = [_runningAnimations count];
+    int i;
+    for (i = 0; i < vc; ++i)
+        {
+        NSAnimation* anim = [_runningAnimations objectAtIndex:i];
+        [anim stopAnimation];
+        }
 }
 
 - (void)_resumeAnimations
 {
-	NSUInteger vc = [_runningAnimations count];
-	int i;
-	for (i = 0; i < vc; ++i)
-	{
-		NSAnimation* anim = [_runningAnimations objectAtIndex:i];
-		[anim startAnimation];
-	}
+    NSUInteger vc = [_runningAnimations count];
+    int i;
+    for (i = 0; i < vc; ++i)
+        {
+        NSAnimation* anim = [_runningAnimations objectAtIndex:i];
+        [anim startAnimation];
+        }
 }
 
 - (void)mouseDown:(NSEvent*)theEvent
@@ -346,12 +347,12 @@ static NSRect KC_defaultFrame(void) {
 
 -(KCBezelAnimation*) initWithBezelView:(KCDefaultVisualizerBezelView*)bezelView
 {
-	if (!(self = [super init]))
-		return nil;
+    if (!(self = [super init]))
+        return nil;
 
-	_bezelView = [bezelView retain];
+    _bezelView = [bezelView retain];
 
-	return self;
+    return self;
 }
 
 - (void)dealloc {
@@ -361,55 +362,55 @@ static NSRect KC_defaultFrame(void) {
 
 -(void) fadeOutOverDuration:(NSTimeInterval)duration
 {
-	if ([self isAnimating])
-		return;
+    if ([self isAnimating])
+        return;
 
-	if (duration < 0.01)
-	{
-		// just do it immediately
-		[self animationDidEnd:self];
-		return;
-	}
+    if (duration < 0.01)
+        {
+            // just do it immediately
+        [self animationDidEnd:self];
+        return;
+        }
 
-	[self setDelegate:self];
-	[self setDuration:duration];
-	[self setFrameRate:30];
-	[self setAnimationCurve:NSAnimationLinear];
-	[self setAnimationBlockingMode:NSAnimationNonblocking];
-	[self startAnimation];
+    [self setDelegate:self];
+    [self setDuration:duration];
+    [self setFrameRate:30];
+    [self setAnimationCurve:NSAnimationLinear];
+    [self setAnimationBlockingMode:NSAnimationNonblocking];
+    [self startAnimation];
 }
 
 -(void) setCurrentProgress:(NSAnimationProgress)progress
 {
-	[super setCurrentProgress:progress];
+    [super setCurrentProgress:progress];
 
-	[_bezelView setAlphaValue:(1 - progress)];
-	[_bezelView setNeedsDisplay:YES];
+    [_bezelView setAlphaValue:(1 - progress)];
+    [_bezelView setNeedsDisplay:YES];
 }
 
 -(void) animationDidEnd:(NSAnimation*)anim
 {
-	CGFloat deltaY = [_bezelView frame].size.height + 10;
-	KCDefaultVisualizerWindow* w = (KCDefaultVisualizerWindow*)[_bezelView window];
-	[w removeRunningAnimation:self];
-	[_bezelView removeFromSuperview];
+    CGFloat deltaY = [_bezelView frame].size.height + 10;
+    KCDefaultVisualizerWindow* w = (KCDefaultVisualizerWindow*)[_bezelView window];
+    [w removeRunningAnimation:self];
+    [_bezelView removeFromSuperview];
 
-	NSArray* a = [[w contentView] subviews];
-	NSUInteger vc = [a count];
-	int i;
-	for (i = 0; i < vc; ++i)
-	{
-		NSView* v = [a objectAtIndex:i];
-		NSRect r = [v frame];
-		r.origin.y += deltaY;
-		[v setFrame:r];
-	}
+    NSArray* a = [[w contentView] subviews];
+    NSUInteger vc = [a count];
+    int i;
+    for (i = 0; i < vc; ++i)
+        {
+        NSView* v = [a objectAtIndex:i];
+        NSRect r = [v frame];
+        r.origin.y += deltaY;
+        [v setFrame:r];
+        }
 
-	NSRect r = [w frame];
-	r.size.height -= deltaY;
-	if (r.size.height < 0)
-		r.size.height = 0;
-	[w setFrame:r display:YES animate:NO];
+    NSRect r = [w frame];
+    r.size.height -= deltaY;
+    if (r.size.height < 0)
+        r.size.height = 0;
+    [w setFrame:r display:YES animate:NO];
 }
 
 @end
@@ -421,27 +422,27 @@ static const int kKCBezelBorder = 6;
 
 - (id)initWithMaxWidth:(CGFloat)maxWidth text:(NSString *)string backgroundColor:(NSColor *)color
 {
-	if (!(self = [super initWithFrame:NSMakeRect(0, 0, maxWidth, kKCDefaultBezelHeight)]))
-		return nil;
+    if (!(self = [super initWithFrame:NSMakeRect(0, 0, maxWidth, kKCDefaultBezelHeight)]))
+        return nil;
 
-	_opacity = 1.0;
+    _opacity = 1.0;
 
-	_maxWidth = maxWidth;
-	_backgroundColor = [color retain];
+    _maxWidth = maxWidth;
+    _backgroundColor = [color retain];
 
-	_textStorage = [[NSTextStorage alloc] initWithString:string];
-	_textContainer = [[NSTextContainer alloc] initWithContainerSize:NSMakeSize(_maxWidth-kKCBezelBorder*2, FLT_MAX)];
-	_layoutManager = [[NSLayoutManager alloc] init];
-	[_layoutManager addTextContainer:_textContainer];
-	[_textStorage addLayoutManager:_layoutManager];
-	[_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
+    _textStorage = [[NSTextStorage alloc] initWithString:string];
+    _textContainer = [[NSTextContainer alloc] initWithContainerSize:NSMakeSize(_maxWidth-kKCBezelBorder*2, FLT_MAX)];
+    _layoutManager = [[NSLayoutManager alloc] init];
+    [_layoutManager addTextContainer:_textContainer];
+    [_textStorage addLayoutManager:_layoutManager];
+    [_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
 
-	[self setAutoresizingMask:NSViewMinYMargin];
+    [self setAutoresizingMask:NSViewMinYMargin];
 
-	[self maybeResize];
-	[self scheduleFadeOut];
+    [self maybeResize];
+    [self scheduleFadeOut];
 
-	return self;
+    return self;
 }
 
 - (void)dealloc {
@@ -455,97 +456,97 @@ static const int kKCBezelBorder = 6;
 
 -(void) scheduleFadeOut
 {
-	NSTimeInterval fadeDelay = [[NSUserDefaults standardUserDefaults] floatForKey:@"default.fadeDelay"];
-	if (fadeDelay == 0)
-		fadeDelay = 2;
-	SEL fadeOutSelector = @selector(beginFadeOut:);
-	[NSObject cancelPreviousPerformRequestsWithTarget:self selector:fadeOutSelector object:nil];
-	[self performSelector:fadeOutSelector withObject:nil afterDelay:fadeDelay];
+    NSTimeInterval fadeDelay = [[NSUserDefaults standardUserDefaults] floatForKey:@"default.fadeDelay"];
+    if (fadeDelay == 0)
+        fadeDelay = 2;
+    SEL fadeOutSelector = @selector(beginFadeOut:);
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:fadeOutSelector object:nil];
+    [self performSelector:fadeOutSelector withObject:nil afterDelay:fadeDelay];
 }
 
 -(void) beginFadeOut:(id)sender
 {
-	KCDefaultVisualizerWindow* w = (KCDefaultVisualizerWindow*)[self window];
-	KCBezelAnimation* anim = [[KCBezelAnimation alloc] initWithBezelView:self];
-	[anim fadeOutOverDuration:[[NSUserDefaults standardUserDefaults] floatForKey:@"default.fadeDuration"]];
-	[w addRunningAnimation:[anim autorelease]];
+    KCDefaultVisualizerWindow* w = (KCDefaultVisualizerWindow*)[self window];
+    KCBezelAnimation* anim = [[KCBezelAnimation alloc] initWithBezelView:self];
+    [anim fadeOutOverDuration:[[NSUserDefaults standardUserDefaults] floatForKey:@"default.fadeDuration"]];
+    [w addRunningAnimation:[anim autorelease]];
 }
 
 -(NSDictionary*) attributes
 {
-	NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-	NSColor* c = [ud colorForKey:@"default.textColor"];
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		[NSFont systemFontOfSize:[ud floatForKey:@"default.fontSize"]], NSFontAttributeName,
-		[c colorWithAlphaComponent:_opacity * [c alphaComponent]], NSForegroundColorAttributeName,
-		nil];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSColor* c = [ud colorForKey:@"default.textColor"];
+    return [NSDictionary dictionaryWithObjectsAndKeys:
+            [NSFont systemFontOfSize:[ud floatForKey:@"default.fontSize"]], NSFontAttributeName,
+            [c colorWithAlphaComponent:_opacity * [c alphaComponent]], NSForegroundColorAttributeName,
+            nil];
 }
 
 -(void) setAlphaValue:(float)opacity
 {
-	_opacity = opacity;
-	[_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
+    _opacity = opacity;
+    [_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
 }
 
 -(void) drawRect:(NSRect)r
 {
-	NSRect frame = [self bounds];
+    NSRect frame = [self bounds];
 
-	NSBezierPath *bgPath = [NSBezierPath bezierPath];
-	[bgPath appendRoundedRect:frame radius:16];
+    NSBezierPath *bgPath = [NSBezierPath bezierPath];
+    [bgPath appendRoundedRect:frame radius:16];
 
-	[[_backgroundColor colorWithAlphaComponent:_opacity * [_backgroundColor alphaComponent]] setFill];
-	[bgPath fill];
+    [[_backgroundColor colorWithAlphaComponent:_opacity * [_backgroundColor alphaComponent]] setFill];
+    [bgPath fill];
 
-	[_layoutManager drawGlyphsForGlyphRange:NSMakeRange(0,[_textStorage length]) atPoint:NSMakePoint(kKCBezelBorder, kKCBezelBorder)];
+    [_layoutManager drawGlyphsForGlyphRange:NSMakeRange(0,[_textStorage length]) atPoint:NSMakePoint(kKCBezelBorder, kKCBezelBorder)];
 }
 
 -(void) maybeResize
 {
-	NSRect frame = [self frame];
-	[_layoutManager glyphRangeForTextContainer:_textContainer];
-	NSSize size = [_layoutManager usedRectForTextContainer:_textContainer].size;
-	size.width += kKCBezelBorder * 2;
-	size.height += kKCBezelBorder * 2;
-	if (frame.size.width != size.width || frame.size.height != size.height)
-	{
-		[self setFrameSize:size];
-		if (size.height != frame.size.height)
-		{
-			float deltaY = size.height - frame.size.height;
-			NSWindow* w = [self window];
-			NSArray* a = [[w contentView] subviews];
-			NSUInteger vc = [a count];
-			int i;
-			for (i = 0; i < vc; ++i)
-			{
-				NSView* v = [a objectAtIndex:i];
-				if (v == self) continue;
-				NSRect f = [v frame];
-				if (f.origin.y > frame.origin.y)
-					f.origin.y += deltaY;
-			}
-			NSRect r = [w frame];
-			r.size.height += deltaY;
-			[self setAutoresizingMask:NSViewMaxYMargin];
-			[w setFrame:r display:YES];
-			[self setAutoresizingMask:NSViewMinYMargin];
-		}
-	}
+    NSRect frame = [self frame];
+    [_layoutManager glyphRangeForTextContainer:_textContainer];
+    NSSize size = [_layoutManager usedRectForTextContainer:_textContainer].size;
+    size.width += kKCBezelBorder * 2;
+    size.height += kKCBezelBorder * 2;
+    if (frame.size.width != size.width || frame.size.height != size.height)
+        {
+        [self setFrameSize:size];
+        if (size.height != frame.size.height)
+            {
+            float deltaY = size.height - frame.size.height;
+            NSWindow* w = [self window];
+            NSArray* a = [[w contentView] subviews];
+            NSUInteger vc = [a count];
+            int i;
+            for (i = 0; i < vc; ++i)
+                {
+                NSView* v = [a objectAtIndex:i];
+                if (v == self) continue;
+                NSRect f = [v frame];
+                if (f.origin.y > frame.origin.y)
+                    f.origin.y += deltaY;
+                }
+            NSRect r = [w frame];
+            r.size.height += deltaY;
+            [self setAutoresizingMask:NSViewMaxYMargin];
+            [w setFrame:r display:YES];
+            [self setAutoresizingMask:NSViewMinYMargin];
+            }
+        }
 }
 
 -(void) appendString:(NSString*)t
 {
-	[self scheduleFadeOut];
-	[_textStorage appendAttributedString:[[[NSAttributedString alloc] initWithString:t] autorelease]];
-	[_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
-	[self maybeResize];
-	[self setNeedsDisplay:YES];
+    [self scheduleFadeOut];
+    [_textStorage appendAttributedString:[[[NSAttributedString alloc] initWithString:t] autorelease]];
+    [_textStorage setAttributes:[self attributes] range:NSMakeRange(0, [_textStorage length])];
+    [self maybeResize];
+    [self setNeedsDisplay:YES];
 }
 
 -(BOOL) isFlipped
 {
-	return YES;
+    return YES;
 }
 
 @end

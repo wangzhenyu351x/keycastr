@@ -98,30 +98,50 @@
 		[attr setObject:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
 	else
 		[attr setObject:[NSColor colorWithCalibratedWhite:1 alpha:0.5] forKey:NSForegroundColorAttributeName];
-	size = [shiftKeyString sizeWithAttributes:attr];
-	[shiftKeyString drawInRect:NSMakeRect(0,(30 - size.height) / 2.0,oneQuarter,size.height) withAttributes:attr];
+
+    size = [shiftKeyString sizeWithAttributes:attr];
+    ({
+
+        CGRect rect = NSMakeRect(0,(30 - size.height) / 2.0,oneQuarter,size.height);
+        rect.origin.x += 200;
+        [shiftKeyString drawInRect:rect withAttributes:attr];
+    });
 
     if (_flags & NSEventModifierFlagControl)
 		[attr setObject:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
 	else
 		[attr setObject:[NSColor colorWithCalibratedWhite:1 alpha:0.5] forKey:NSForegroundColorAttributeName];
 	size = [controlKeyString sizeWithAttributes:attr];
-	[controlKeyString drawInRect:NSMakeRect(oneQuarter,(30 - size.height) / 2.0,oneQuarter,size.height) withAttributes:attr];
+    ({
+        CGRect rect =NSMakeRect(oneQuarter,(30 - size.height) / 2.0,oneQuarter,size.height);
+        rect.origin.x += 200;
+        [controlKeyString drawInRect:rect withAttributes:attr];
+    });
+
 
     if (_flags & NSEventModifierFlagOption)
 		[attr setObject:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
 	else
 		[attr setObject:[NSColor colorWithCalibratedWhite:1 alpha:0.5] forKey:NSForegroundColorAttributeName];
 	size = [altKeyString sizeWithAttributes:attr];
-	[altKeyString drawInRect:NSMakeRect(oneQuarter*2,(30 - size.height) / 2.0,oneQuarter,size.height) withAttributes:attr];
+    ({
+        CGRect rect = NSMakeRect(oneQuarter*2,(30 - size.height) / 2.0,oneQuarter,size.height);
+        rect.origin.x += 200;
+        [altKeyString drawInRect:rect withAttributes:attr];
+    });
+
 
     if (_flags & NSEventModifierFlagCommand)
 		[attr setObject:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
 	else
 		[attr setObject:[NSColor colorWithCalibratedWhite:1 alpha:0.5] forKey:NSForegroundColorAttributeName];
 	size = [commandKeyString sizeWithAttributes:attr];
-	[commandKeyString drawInRect:NSMakeRect(oneQuarter*3,(30 - size.height) / 2.0,oneQuarter,size.height) withAttributes:attr];
-	
+    ({
+        CGRect rect =NSMakeRect(oneQuarter*3,(30 - size.height) / 2.0,oneQuarter,size.height);
+        rect.origin.x += 200;
+        [commandKeyString drawInRect:rect withAttributes:attr];
+    });
+
 	if (_displayedString != nil)
 	{
 		[attr setObject:[NSColor whiteColor] forKey:NSForegroundColorAttributeName];
@@ -135,7 +155,11 @@
 			[attr setObject:[NSFont systemFontOfSize:fontSize] forKey:NSFontAttributeName];
 			size = [_displayedString sizeWithAttributes:attr];
 		}
-		[_displayedString drawInRect:NSMakeRect(0,30+(frame.size.height-30 - size.height)/2.0,frame.size.width,size.height) withAttributes:attr];
+    ({
+        CGRect rect = NSMakeRect(0,30+(frame.size.height-30 - size.height)/2.0,frame.size.width,size.height);
+        rect.origin.x += 200;
+            [_displayedString drawInRect:rect withAttributes:attr];
+    });
 	}
 }
 
@@ -184,8 +208,11 @@
 {
     if (!(self = [super init]))
         return nil;
+
+    CGFloat width = [NSScreen mainScreen].frame.size.width;
+//    CGFloat height = [NSScreen mainScreen].frame.size.height;
     
-    NSRect r = { 10, 10, 200, 100 };
+    NSRect r = { (width - 100)/2.0, 10, 200, 100 };
     _visualizerWindow = [[NSWindow alloc] initWithContentRect:r
                                                     styleMask:NSWindowStyleMaskBorderless
                                                       backing:NSBackingStoreBuffered

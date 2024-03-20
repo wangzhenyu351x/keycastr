@@ -50,16 +50,15 @@
 		AE39388C1BB73B36005458A6 /* KeyCastrStatusItem@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE3938881BB73B36005458A6 /* KeyCastrStatusItem@2x.png */; };
 		AE39388D1BB73B36005458A6 /* KeyCastrStatusItemActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE3938891BB73B36005458A6 /* KeyCastrStatusItemActive@2x.png */; };
 		AE39388E1BB73B36005458A6 /* KeyCastrStatusItemInactive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AE39388A1BB73B36005458A6 /* KeyCastrStatusItemInactive@2x.png */; };
-		AF408C1C258710E70010C0EF /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6DD4032586E03A00EDC9D4 /* ShortcutRecorder.framework */; };
-		AF408C1D258710E70010C0EF /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF6DD41C2586E04C00EDC9D4 /* Sparkle.framework */; };
-		AF443C7225A115A1005C11AC /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AF6DD41C2586E04C00EDC9D4 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		AF443C7325A115A1005C11AC /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = AF6DD4032586E03A00EDC9D4 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		AF546FAC272DFFBE00EA6AFD /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF546FAB272DFFBE00EA6AFD /* Carbon.framework */; };
 		AF6B80EB25AA7ACE00C6FA9D /* KeyCastrAbout.qtz in Resources */ = {isa = PBXBuildFile; fileRef = AF6B80D925AA7ACE00C6FA9D /* KeyCastrAbout.qtz */; };
 		AF7C0341271F694500CE1F8D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7C0340271F694500CE1F8D /* QuartzCore.framework */; };
 		AFAA2BB82A991B39007C7BAA /* KCMouseEventVisualizerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAA2BB72A991B39007C7BAA /* KCMouseEventVisualizerTests.m */; };
 		AFC1721C2377CFF500292155 /* KCKeystroke_ConversionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC1721B2377CFF500292155 /* KCKeystroke_ConversionTests.m */; };
 		AFC1721E2377CFF500292155 /* KCVisualizer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D1646B60F43DBD700CA65AD /* KCVisualizer.framework */; };
+		C651B04F2BAABA4800C7A2C5 /* ShortcutRecorder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C651B04C2BAAB94400C7A2C5 /* ShortcutRecorder.framework */; };
+		C651B0502BAABA4800C7A2C5 /* ShortcutRecorder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C651B04C2BAAB94400C7A2C5 /* ShortcutRecorder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C651B0532BAABE5300C7A2C5 /* SUUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = C651B0522BAABE5300C7A2C5 /* SUUpdater.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,173 +97,33 @@
 			remoteGlobalIDString = 3D1648AB0F451D4500CA65AD;
 			remoteInfo = Svelte;
 		};
-		AF0FB730274874C4001B292E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BAC79C07216FCE8E00E45F23;
-			remoteInfo = Inspector;
-		};
-		AF0FB732274874C4001B292E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BA722EC52161619200EFF192;
-			remoteInfo = "Unit Tests";
-		};
-		AF2B004B287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 726E07AD1CAF08D6001A286B;
-			remoteInfo = SparkleInstallerLauncher;
-		};
-		AF2B004D287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 724BB36C1D31D0B7005D534A;
-			remoteInfo = SparkleInstallerConnection;
-		};
-		AF2B004F287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 724BB3931D333832005D534A;
-			remoteInfo = SparkleInstallerStatus;
-		};
-		AF2B0051287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 726E07EF1CAF37BD001A286B;
-			remoteInfo = SparkleDownloader;
-		};
-		AF2B0053287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 726E4A161C86C88F00C57C6A;
-			remoteInfo = TestAppHelper;
-		};
-		AF2B0055287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 72D9549E1CBB415B006F28BD;
-			remoteInfo = "sparkle-cli";
-		};
-		AF2B0057287B84DD00309761 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 721C24451CB753E6005440CB;
-			remoteInfo = "Installer Progress";
-		};
-		AF6DD4022586E03A00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 939837800DA42965007F53F3;
-			remoteInfo = ShortcutRecorder.framework;
-		};
-		AF6DD41B2586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
-			remoteInfo = Sparkle;
-		};
-		AF6DD41D2586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 61B5F90209C4CEE200B25A18;
-			remoteInfo = "Sparkle Test App";
-		};
-		AF6DD41F2586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 612279D90DB5470200AB99EA;
-			remoteInfo = "Sparkle Unit Tests";
-		};
-		AF6DD4212586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5D06E8D00FD68C7C005AE3F6;
-			remoteInfo = BinaryDelta;
-		};
-		AF6DD4232586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 55C14BB7136EEF1500649790;
-			remoteInfo = Autoupdate;
-		};
-		AF6DD4252586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 726B2B5D1C645FC900388755;
-			remoteInfo = "UI Tests";
-		};
-		AF6DD4292586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5AE13FB31E0D9E07000D2C2C;
-			remoteInfo = generate_appcast;
-		};
-		AF6DD42B2586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5AB8F19F214DA72000A1187F;
-			remoteInfo = generate_keys;
-		};
-		AF6DD42D2586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5A5ADED7214EDE4900DF0099;
-			remoteInfo = sign_update;
-		};
-		AF6DD42F2586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EA4311EA229D651300A5503D;
-			remoteInfo = bsdiff;
-		};
-		AF6DD4312586E04C00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = EA4311A0229D5FBC00A5503D;
-			remoteInfo = ed25519;
-		};
-		AF6DD4332586E0A700EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
-			remoteInfo = Sparkle;
-		};
-		AF6DD4362586E0BA00EDC9D4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 9398377F0DA42965007F53F3;
-			remoteInfo = ShortcutRecorder.framework;
-		};
 		AFC1721F2377CFF500292155 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 3D1646B50F43DBD700CA65AD;
 			remoteInfo = KCVisualizer;
+		};
+		C651B0492BAAB94400C7A2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C651B0432BAAB94400C7A2C5 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BAC79C07216FCE8E00E45F23;
+			remoteInfo = Inspector;
+		};
+		C651B04B2BAAB94400C7A2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C651B0432BAAB94400C7A2C5 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 939837800DA42965007F53F3;
+			remoteInfo = ShortcutRecorder.framework;
+		};
+		C651B04D2BAAB94400C7A2C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C651B0432BAAB94400C7A2C5 /* ShortcutRecorder.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BA722EC52161619200EFF192;
+			remoteInfo = "Unit Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -286,8 +145,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				AF443C7225A115A1005C11AC /* Sparkle.framework in CopyFiles */,
-				AF443C7325A115A1005C11AC /* ShortcutRecorder.framework in CopyFiles */,
+				C651B0502BAABA4800C7A2C5 /* ShortcutRecorder.framework in CopyFiles */,
 				3D1646D10F43DCA700CA65AD /* KCVisualizer.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,8 +210,6 @@
 		AE39388A1BB73B36005458A6 /* KeyCastrStatusItemInactive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "KeyCastrStatusItemInactive@2x.png"; sourceTree = "<group>"; };
 		AF546FAB272DFFBE00EA6AFD /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		AF6B80D925AA7ACE00C6FA9D /* KeyCastrAbout.qtz */ = {isa = PBXFileReference; lastKnownFileType = "video.quartz-composer"; path = KeyCastrAbout.qtz; sourceTree = "<group>"; };
-		AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
-		AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Sparkle.xcodeproj; path = Sparkle/Sparkle.xcodeproj; sourceTree = "<group>"; };
 		AF7C0340271F694500CE1F8D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AFAA2BB72A991B39007C7BAA /* KCMouseEventVisualizerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCMouseEventVisualizerTests.m; sourceTree = "<group>"; };
 		AFB1F705235BC9AB0092F4A9 /* KeyCastr.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyCastr.entitlements; sourceTree = "<group>"; };
@@ -361,6 +217,9 @@
 		AFC1721B2377CFF500292155 /* KCKeystroke_ConversionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KCKeystroke_ConversionTests.m; sourceTree = "<group>"; };
 		AFC1721D2377CFF500292155 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFCE82C726767970002A22EA /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		C651B0432BAAB94400C7A2C5 /* ShortcutRecorder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShortcutRecorder.xcodeproj; path = ../../../ShortcutRecorder/ShortcutRecorder.xcodeproj; sourceTree = "<group>"; };
+		C651B0512BAABE5300C7A2C5 /* SUUpdater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SUUpdater.h; sourceTree = "<group>"; };
+		C651B0522BAABE5300C7A2C5 /* SUUpdater.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SUUpdater.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -393,11 +252,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C651B04F2BAABA4800C7A2C5 /* ShortcutRecorder.framework in Frameworks */,
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				3D3F52BA0F30C68B001C7272 /* Quartz.framework in Frameworks */,
 				3D1646F40F43DD8300CA65AD /* KCVisualizer.framework in Frameworks */,
-				AF408C1D258710E70010C0EF /* Sparkle.framework in Frameworks */,
-				AF408C1C258710E70010C0EF /* ShortcutRecorder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,6 +279,8 @@
 				3D3F52EA0F30CB13001C7272 /* KCPrefsWindowController.m */,
 				3D3F56CA0F337533001C7272 /* NSUserDefaults+Utility.m */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
+				C651B0512BAABE5300C7A2C5 /* SUUpdater.h */,
+				C651B0522BAABE5300C7A2C5 /* SUUpdater.m */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 			);
 			name = Application;
@@ -565,45 +425,9 @@
 		AF6DD3FB2586E00500EDC9D4 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */,
-				AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */,
+				C651B0432BAAB94400C7A2C5 /* ShortcutRecorder.xcodeproj */,
 			);
 			path = Externals;
-			sourceTree = "<group>";
-		};
-		AF6DD3FD2586E03A00EDC9D4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AF0FB731274874C4001B292E /* Inspector.app */,
-				AF6DD4032586E03A00EDC9D4 /* ShortcutRecorder.framework */,
-				AF0FB733274874C4001B292E /* Unit Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		AF6DD4092586E04C00EDC9D4 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				AF6DD41C2586E04C00EDC9D4 /* Sparkle.framework */,
-				AF6DD4242586E04C00EDC9D4 /* Autoupdate */,
-				AF2B004C287B84DD00309761 /* Installer.xpc */,
-				AF2B004E287B84DD00309761 /* InstallerConnection.xpc */,
-				AF2B0050287B84DD00309761 /* InstallerStatus.xpc */,
-				AF2B0052287B84DD00309761 /* Downloader.xpc */,
-				AF6DD41E2586E04C00EDC9D4 /* Sparkle Test App.app */,
-				AF2B0054287B84DD00309761 /* TestAppHelper.xpc */,
-				AF6DD4202586E04C00EDC9D4 /* Sparkle Unit Tests.xctest */,
-				AF6DD4222586E04C00EDC9D4 /* BinaryDelta */,
-				AF2B0056287B84DD00309761 /* sparkle.app */,
-				AF2B0058287B84DD00309761 /* Updater.app */,
-				AF6DD4262586E04C00EDC9D4 /* UI Tests.xctest */,
-				AF6DD42A2586E04C00EDC9D4 /* generate_appcast */,
-				AF6DD42C2586E04C00EDC9D4 /* generate_keys */,
-				AF6DD42E2586E04C00EDC9D4 /* sign_update */,
-				AF6DD4302586E04C00EDC9D4 /* libbsdiff.a */,
-				AF6DD4322586E04C00EDC9D4 /* libed25519.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		AFC1721A2377CFF500292155 /* KCVisualizerTests */ = {
@@ -614,6 +438,16 @@
 				AFAA2BB72A991B39007C7BAA /* KCMouseEventVisualizerTests.m */,
 			);
 			path = KCVisualizerTests;
+			sourceTree = "<group>";
+		};
+		C651B0442BAAB94400C7A2C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C651B04A2BAAB94400C7A2C5 /* Inspector.app */,
+				C651B04C2BAAB94400C7A2C5 /* ShortcutRecorder.framework */,
+				C651B04E2BAAB94400C7A2C5 /* Unit Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -702,8 +536,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				AF6DD4372586E0BA00EDC9D4 /* PBXTargetDependency */,
-				AF6DD4342586E0A700EDC9D4 /* PBXTargetDependency */,
 				3D1646D50F43DCB200CA65AD /* PBXTargetDependency */,
 				3D1648C60F451EE400CA65AD /* PBXTargetDependency */,
 				3D1646670F43D74700CA65AD /* PBXTargetDependency */,
@@ -750,7 +582,7 @@
 						ProvisioningStyle = Automatic;
 					};
 					8D1107260486CEB800E47090 = {
-						DevelopmentTeam = 68TUCLNAPS;
+						DevelopmentTeam = YT75U68YYB;
 						ProvisioningStyle = Automatic;
 					};
 					AFC172182377CFF500292155 = {
@@ -771,12 +603,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = AF6DD3FD2586E03A00EDC9D4 /* Products */;
-					ProjectRef = AF6DD3FC2586E03A00EDC9D4 /* ShortcutRecorder.xcodeproj */;
-				},
-				{
-					ProductGroup = AF6DD4092586E04C00EDC9D4 /* Products */;
-					ProjectRef = AF6DD4082586E04C00EDC9D4 /* Sparkle.xcodeproj */;
+					ProductGroup = C651B0442BAAB94400C7A2C5 /* Products */;
+					ProjectRef = C651B0432BAAB94400C7A2C5 /* ShortcutRecorder.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -791,151 +619,25 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		AF0FB731274874C4001B292E /* Inspector.app */ = {
+		C651B04A2BAAB94400C7A2C5 /* Inspector.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
 			path = Inspector.app;
-			remoteRef = AF0FB730274874C4001B292E /* PBXContainerItemProxy */;
+			remoteRef = C651B0492BAAB94400C7A2C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		AF0FB733274874C4001B292E /* Unit Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "Unit Tests.xctest";
-			remoteRef = AF0FB732274874C4001B292E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B004C287B84DD00309761 /* Installer.xpc */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.xpc-service";
-			path = Installer.xpc;
-			remoteRef = AF2B004B287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B004E287B84DD00309761 /* InstallerConnection.xpc */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.xpc-service";
-			path = InstallerConnection.xpc;
-			remoteRef = AF2B004D287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B0050287B84DD00309761 /* InstallerStatus.xpc */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.xpc-service";
-			path = InstallerStatus.xpc;
-			remoteRef = AF2B004F287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B0052287B84DD00309761 /* Downloader.xpc */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.xpc-service";
-			path = Downloader.xpc;
-			remoteRef = AF2B0051287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B0054287B84DD00309761 /* TestAppHelper.xpc */ = {
-			isa = PBXReferenceProxy;
-			fileType = "wrapper.xpc-service";
-			path = TestAppHelper.xpc;
-			remoteRef = AF2B0053287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B0056287B84DD00309761 /* sparkle.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = sparkle.app;
-			remoteRef = AF2B0055287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF2B0058287B84DD00309761 /* Updater.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = Updater.app;
-			remoteRef = AF2B0057287B84DD00309761 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4032586E03A00EDC9D4 /* ShortcutRecorder.framework */ = {
+		C651B04C2BAAB94400C7A2C5 /* ShortcutRecorder.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = ShortcutRecorder.framework;
-			remoteRef = AF6DD4022586E03A00EDC9D4 /* PBXContainerItemProxy */;
+			remoteRef = C651B04B2BAAB94400C7A2C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		AF6DD41C2586E04C00EDC9D4 /* Sparkle.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Sparkle.framework;
-			remoteRef = AF6DD41B2586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD41E2586E04C00EDC9D4 /* Sparkle Test App.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "Sparkle Test App.app";
-			remoteRef = AF6DD41D2586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4202586E04C00EDC9D4 /* Sparkle Unit Tests.xctest */ = {
+		C651B04E2BAAB94400C7A2C5 /* Unit Tests.xctest */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.cfbundle;
-			path = "Sparkle Unit Tests.xctest";
-			remoteRef = AF6DD41F2586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4222586E04C00EDC9D4 /* BinaryDelta */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = BinaryDelta;
-			remoteRef = AF6DD4212586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4242586E04C00EDC9D4 /* Autoupdate */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = Autoupdate;
-			remoteRef = AF6DD4232586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4262586E04C00EDC9D4 /* UI Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "UI Tests.xctest";
-			remoteRef = AF6DD4252586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD42A2586E04C00EDC9D4 /* generate_appcast */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = generate_appcast;
-			remoteRef = AF6DD4292586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD42C2586E04C00EDC9D4 /* generate_keys */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = generate_keys;
-			remoteRef = AF6DD42B2586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD42E2586E04C00EDC9D4 /* sign_update */ = {
-			isa = PBXReferenceProxy;
-			fileType = "compiled.mach-o.executable";
-			path = sign_update;
-			remoteRef = AF6DD42D2586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4302586E04C00EDC9D4 /* libbsdiff.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libbsdiff.a;
-			remoteRef = AF6DD42F2586E04C00EDC9D4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		AF6DD4322586E04C00EDC9D4 /* libed25519.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libed25519.a;
-			remoteRef = AF6DD4312586E04C00EDC9D4 /* PBXContainerItemProxy */;
+			path = "Unit Tests.xctest";
+			remoteRef = C651B04D2BAAB94400C7A2C5 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1032,6 +734,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				3D3F52EB0F30CB13001C7272 /* KCPrefsWindowController.m in Sources */,
 				3D3F540C0F30E8E7001C7272 /* KCEventTap.m in Sources */,
+				C651B0532BAABE5300C7A2C5 /* SUUpdater.m in Sources */,
 				3D3F56CB0F337533001C7272 /* NSUserDefaults+Utility.m in Sources */,
 				3D1646EB0F43DD3000CA65AD /* KCAppController.m in Sources */,
 			);
@@ -1073,16 +776,6 @@
 			isa = PBXTargetDependency;
 			target = 3D1648AB0F451D4500CA65AD /* Svelte */;
 			targetProxy = 3D1648C50F451EE400CA65AD /* PBXContainerItemProxy */;
-		};
-		AF6DD4342586E0A700EDC9D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = Sparkle;
-			targetProxy = AF6DD4332586E0A700EDC9D4 /* PBXContainerItemProxy */;
-		};
-		AF6DD4372586E0BA00EDC9D4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = ShortcutRecorder.framework;
-			targetProxy = AF6DD4362586E0BA00EDC9D4 /* PBXContainerItemProxy */;
 		};
 		AFC172202377CFF500292155 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1364,7 +1057,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(MARKETING_VERSION)";
-				DEVELOPMENT_TEAM = 68TUCLNAPS;
+				DEVELOPMENT_TEAM = YT75U68YYB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1379,7 +1072,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = "0.9.16";
+				MARKETING_VERSION = 0.9.16;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.keycastr;
 				PRODUCT_NAME = KeyCastr;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1398,8 +1091,8 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = "$(MARKETING_VERSION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 68TUCLNAPS;
-				"DEVELOPMENT_TEAM[sdk=macosx*]" = 68TUCLNAPS;
+				DEVELOPMENT_TEAM = YT75U68YYB;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = YT75U68YYB;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1412,7 +1105,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = "0.9.16";
+				MARKETING_VERSION = 0.9.16;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.keycastr;
 				PRODUCT_NAME = KeyCastr;
 				PROVISIONING_PROFILE_SPECIFIER = "KeyCastr Developer ID";
